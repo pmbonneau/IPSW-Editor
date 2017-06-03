@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IPSWlib", "IPSWlib\IPSWlib.csproj", "{FB5C2487-B70B-4966-B0C6-F4D328115BB9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IPSWlibUI", "IPSWlibUI\IPSWlibUI.csproj", "{B7249339-4BC9-4932-A4F8-15164A22E402}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FB5C2487-B70B-4966-B0C6-F4D328115BB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB5C2487-B70B-4966-B0C6-F4D328115BB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB5C2487-B70B-4966-B0C6-F4D328115BB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB5C2487-B70B-4966-B0C6-F4D328115BB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7249339-4BC9-4932-A4F8-15164A22E402}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7249339-4BC9-4932-A4F8-15164A22E402}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7249339-4BC9-4932-A4F8-15164A22E402}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7249339-4BC9-4932-A4F8-15164A22E402}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
