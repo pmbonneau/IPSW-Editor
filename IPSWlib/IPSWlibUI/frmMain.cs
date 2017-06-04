@@ -52,5 +52,10 @@ namespace IPSWlibUI
         {
             PackageIPSW.ReadFlashManifest();
         }
+
+        private void btnAddFileToAllFlash_Click(object sender, EventArgs e)
+        {
+            PackageIPSW.AddToAllFlashFolder("iBootB.n81ap.RELEASE.img3");
+        }
     }
 }

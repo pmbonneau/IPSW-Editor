@@ -16,6 +16,7 @@ namespace IPSWlib
         string[] AllFilesIPSW;
         List<string> FlashManifest = new List<string>();
         string FlashManifestPath = "";
+        string AllFlashFolder = "";
 
         public Editor(string pPathIPSW, string pPathUnpackedIPSW)
         {
@@ -28,6 +29,17 @@ namespace IPSWlib
             PathUnpackedIPSW = pPathUnpackedIPSW;
 
             AllFilesIPSW = Directory.GetFiles(PathUnpackedIPSW, "*", SearchOption.AllDirectories);
+
+            for (int i = 0; i < AllFilesIPSW.Length; i++)
+            {
+                if (AllFilesIPSW[i].Contains("manifest"))
+                {
+                    FlashManifestPath = AllFilesIPSW[i];
+                }
+            }
+
+            AllFlashFolder = FlashManifestPath.Remove(FlashManifestPath.Length - 8, 8);
+
         }
 
         public void RebuildIPSW(string pPathUnpackedIPSW, string pPathPackedIPSW)
@@ -48,13 +60,6 @@ namespace IPSWlib
         public List<string> ReadFlashManifest()
         {
             string[] FlashManifestArray;
-            for (int i = 0; i < AllFilesIPSW.Length; i++)
-            {
-                if (AllFilesIPSW[i].Contains("manifest"))
-                {
-                    FlashManifestPath = AllFilesIPSW[i];
-                }
-            }
             FlashManifestArray = File.ReadAllLines(FlashManifestPath);
             for (int i = 0; i < FlashManifestArray.Length; i++)
             {
@@ -65,7 +70,12 @@ namespace IPSWlib
 
         public void AddToFlashManifest(string pImageFileName)
         {
-            File.AppendAllText(FlashManifestPath, pImageFileName);
+            File.AppendAllText(FlashManifestPath, pImageFileName + Environment.NewLine);
+        }
+
+        public void AddToAllFlashFolder(string pImageFilePath)
+        {
+            File.Copy(pImageFilePath, AllFlashFolder + "iBootB.n81ap.RELEASE.img3");
         }
     }
 }

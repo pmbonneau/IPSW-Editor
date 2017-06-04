@@ -34,6 +34,7 @@
             this.lbFilesIPSW = new System.Windows.Forms.ListBox();
             this.btnAddToFLashManifest = new System.Windows.Forms.Button();
             this.btnReadFlashManifest = new System.Windows.Forms.Button();
+            this.btnAddFileToAllFlash = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnOpenIPSW
@@ -99,11 +100,23 @@
             this.btnReadFlashManifest.UseVisualStyleBackColor = true;
             this.btnReadFlashManifest.Click += new System.EventHandler(this.btnReadFlashManifest_Click);
             // 
+            // btnAddFileToAllFlash
+            // 
+            this.btnAddFileToAllFlash.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddFileToAllFlash.Location = new System.Drawing.Point(203, 136);
+            this.btnAddFileToAllFlash.Name = "btnAddFileToAllFlash";
+            this.btnAddFileToAllFlash.Size = new System.Drawing.Size(154, 44);
+            this.btnAddFileToAllFlash.TabIndex = 7;
+            this.btnAddFileToAllFlash.Text = "Add File to All Flash";
+            this.btnAddFileToAllFlash.UseVisualStyleBackColor = true;
+            this.btnAddFileToAllFlash.Click += new System.EventHandler(this.btnAddFileToAllFlash_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(564, 254);
+            this.Controls.Add(this.btnAddFileToAllFlash);
             this.Controls.Add(this.btnReadFlashManifest);
             this.Controls.Add(this.btnAddToFLashManifest);
             this.Controls.Add(this.lbFilesIPSW);
@@ -124,6 +137,7 @@
         private System.Windows.Forms.ListBox lbFilesIPSW;
         private System.Windows.Forms.Button btnAddToFLashManifest;
         private System.Windows.Forms.Button btnReadFlashManifest;
+        private System.Windows.Forms.Button btnAddFileToAllFlash;
     }
 }
 
