@@ -57,6 +57,20 @@ namespace IPSWlib
             return AllFilesIPSW;
         }
 
+        public string getVersion()
+        {
+            string[] SplittedFileName;
+            SplittedFileName = FileNameIPSW.Split('_');
+            return SplittedFileName[1];
+        }
+
+        public string getBuildNumber()
+        {
+            string[] SplittedFileName;
+            SplittedFileName = FileNameIPSW.Split('_');
+            return SplittedFileName[2];
+        }
+
         public List<string> ReadFlashManifest()
         {
             string[] FlashManifestArray;
@@ -75,7 +89,39 @@ namespace IPSWlib
 
         public void AddToAllFlashFolder(string pImageFilePath)
         {
-            File.Copy(pImageFilePath, AllFlashFolder + "iBootB.n81ap.RELEASE.img3");
+            string ImageFileName = Path.GetFileName(pImageFilePath);
+            File.Copy(pImageFilePath, AllFlashFolder + "\\" + ImageFileName);
+        }
+
+        public string AddToAllFlashFolder(string pImageFilePath, string pInstanceOS)
+        {
+            string ImageFileName = Path.GetFileName(pImageFilePath);
+            string[] SplittedImageFileName = ImageFileName.Split('.');
+            string UpdatedImageFileName = "";
+            if (pInstanceOS == "Secondary")
+            {
+                SplittedImageFileName[0] = SplittedImageFileName[0] + "B";
+            }
+            else if (pInstanceOS == "Third")
+            {
+                SplittedImageFileName[0] = SplittedImageFileName[0] + "C";
+            }
+            else if (pInstanceOS == "Fourth")
+            {
+                SplittedImageFileName[0] = SplittedImageFileName[0] + "D";
+            }
+
+            if (SplittedImageFileName.Length == 3)
+            {
+                UpdatedImageFileName = SplittedImageFileName[0] + "." + SplittedImageFileName[1] + "." + SplittedImageFileName[2];
+            }
+            else if (SplittedImageFileName.Length == 4)
+            {
+                UpdatedImageFileName = SplittedImageFileName[0] + "." + SplittedImageFileName[1] + "." + SplittedImageFileName[2] + "." + SplittedImageFileName[3];
+            }
+
+            File.Copy(pImageFilePath, AllFlashFolder + "\\" + UpdatedImageFileName);
+            return UpdatedImageFileName;
         }
     }
 }
