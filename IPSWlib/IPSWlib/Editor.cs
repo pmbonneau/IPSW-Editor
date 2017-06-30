@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
-using System.IO.Compression;
+using Ionic.Zip;
 
 namespace IPSWlib
 {
@@ -25,7 +22,10 @@ namespace IPSWlib
             FileNameIPSW = FileNameIPSW.Remove(FileNameIPSW.Length - 5, 5);
 
             pPathUnpackedIPSW = pPathUnpackedIPSW + FileNameIPSW;
-            ZipFile.ExtractToDirectory(PathIPSW, pPathUnpackedIPSW);
+
+            ZipFile zip = ZipFile.Read(PathIPSW);
+            zip.ExtractAll(pPathUnpackedIPSW);
+
             PathUnpackedIPSW = pPathUnpackedIPSW;
 
             AllFilesIPSW = Directory.GetFiles(PathUnpackedIPSW, "*", SearchOption.AllDirectories);
@@ -37,14 +37,14 @@ namespace IPSWlib
                     FlashManifestPath = AllFilesIPSW[i];
                 }
             }
-
             AllFlashFolder = FlashManifestPath.Remove(FlashManifestPath.Length - 8, 8);
-
         }
 
         public void RebuildIPSW(string pPathUnpackedIPSW, string pPathPackedIPSW)
         {
-            ZipFile.CreateFromDirectory(pPathUnpackedIPSW, pPathPackedIPSW);
+            ZipFile zip = new ZipFile();
+            zip.AddDirectory(pPathUnpackedIPSW);
+            zip.Save(pPathPackedIPSW);
         }
 
         public string getFileNameIPSW()
