@@ -123,5 +123,19 @@ namespace IPSWlib
             File.Copy(pImageFilePath, AllFlashFolder + "\\" + UpdatedImageFileName);
             return UpdatedImageFileName;
         }
+
+        public string getRootFileSystemImagePath()
+        {
+            FileInfo fInfo;
+            for (int i = 0; i < AllFilesIPSW.Length; i++)
+            {
+                fInfo = new FileInfo(AllFilesIPSW[i]);
+                if (fInfo.Length > 134217728)
+                {
+                    return AllFilesIPSW[i];
+                }
+            }
+            return null;
+        }
     }
 }
